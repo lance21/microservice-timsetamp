@@ -1,27 +1,26 @@
-Welcome to Glitch
-=================
+Welcome to the TimeStamp Microservice
+=====================================
 
-Click `Show` in the header to see your app live. Updates to your code will instantly deploy and update live.
+The microservice exposes the end point "/<date>" which accepts the <date> parameter in the form:
+- Unix time (in seconds) (e.g. 1450137600 which corresponds to December 15, 2015).
+- Natural date (e.g. "December 15, 2015" - formatted in the url as "December%2015,%202015").
 
-**Glitch** is the friendly community where you'll build the app of your dreams. Glitch lets you instantly create, remix, edit, and host an app, bot or site, and you can invite collaborators or helpers to simultaneously edit code with you.
+The microservice returns the following JSON:
 
-Find out more [about Glitch](https://glitch.com/about).
+{ "unix" : <unix_time>, 
+"natural": <natural_date> }
 
+Where:
+- <unix_time> is the Unix time (in seconds) since January 1, 1970 00:00:00.
+- <natural_date> is the natural date string of the form "Month Day, Year".
 
-Your Project
-------------
+If a request is made to the end point that does not satisfy the formats expected for <date> then
+the microservice will return 'null' for both <unix_time> and <natural_date>.
 
-On the front-end,
-- edit `public/client.js`, `public/style.css` and `views/index.html`
-- drag in `assets`, like images or music, to add them to your project
-
-On the back-end,
-- your app starts at `server.js`
-- add frameworks and packages in `package.json`
-- safely store app secrets in `.env` (nobody can see this but you and people you invite)
+The microservice was built to satisfy the [FCC TimeStamp Microservice API Challenge](https://www.freecodecamp.org/challenges/timestamp-microservice).
 
 
-Made by [Fog Creek](https://fogcreek.com/)
+Made by [lance21](https://github.com/lance21/microservice-timsetamp)
 -------------------
 
 \ ゜o゜)ノ

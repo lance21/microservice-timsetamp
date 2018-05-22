@@ -6,7 +6,7 @@ var app = express();
 
 //helper function
 function ParseDateString( req_string ){
-  if( req_string.match(/^[0-9]+$/) ) {
+  if( req_string.match(/^-{0,1}[0-9]+$/) ) {
     return new Date( Number(req_string) * 1000.0 );
   }
   else if( req_string.match(/^[A-Z][a-z]+ [0-9]{2}, [0-9]{4}$/) ){
